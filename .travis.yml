@@ -23,14 +23,8 @@ env:
 
 before_install:
   - curl -L https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m` > docker-compose
-  - chmod +x docker-compose
-  - sudo mv docker-compose /usr/local/bin
-  - docker-compose -v
-  - docker -v
-  # symfony application folder
-  - mkdir symfony
-  - cp .env.dist .env
-  - cat docker-compose.yml
+  - chmod +x docker-compose && sudo mv docker-compose /usr/local/bin
+  - mkdir symfony && cp .env.dist .env
 
 script:
   - docker-compose build
